@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pharmacare-api-auth
+  datasource:
+    url: jdbc:postgresql://localhost:5432/user_auth_db
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: user_credential
+    show-sql: false
+
+jwt:
+  secret: ${PHARMACARE_JWT_SECRET:pharmacare-security-secret-key-should-be-long-enough}
+  expiration: 86400000
+
