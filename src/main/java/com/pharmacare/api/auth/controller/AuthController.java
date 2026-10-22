@@ -5,6 +5,7 @@ import com.pharmacare.security.authentication.dto.AuthResponse;
 import com.pharmacare.security.authentication.dto.LoginRequest;
 import com.pharmacare.security.authentication.dto.RegisterRequest;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,5 +31,12 @@ public class AuthController {
     public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authenticationService.register(request));
     }
-}
 
+    @PostMapping("/refresh")
+    public ResponseEntity<AuthResponse> refresh(@Valid @RequestBody RefreshTokenRequest request) {
+        return ResponseEntity.ok(authenticationService.refresh(request.refreshToken()));
+    }
+
+    public record RefreshTokenRequest(@NotBlank String refreshToken) {
+    }
+}

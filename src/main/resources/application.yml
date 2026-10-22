@@ -20,4 +20,4 @@ spring:
 jwt:
   secret: ${PHARMACARE_JWT_SECRET:pharmacare-security-secret-key-should-be-long-enough}
   expiration: 86400000
-
+  refresh-expiration: 604800000
