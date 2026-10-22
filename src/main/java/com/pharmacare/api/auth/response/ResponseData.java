@@ -1,5 +1,6 @@
 package com.pharmacare.api.auth.response;
 
+/** Generic envelope for successful endpoints, keeping status, payload, and message together. */
 public class ResponseData<T> {
     private boolean success;
     private T data;
@@ -38,4 +39,3 @@ public class ResponseData<T> {
         this.message = message;
     }
 }
-

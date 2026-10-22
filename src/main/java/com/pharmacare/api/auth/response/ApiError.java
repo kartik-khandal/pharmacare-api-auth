@@ -2,6 +2,7 @@ package com.pharmacare.api.auth.response;
 
 import java.time.Instant;
 
+/** Immutable response body shared by the API's exception handlers. */
 public class ApiError {
     private final Instant timestamp;
     private final int status;
@@ -31,4 +32,3 @@ public class ApiError {
         return message;
     }
 }
-

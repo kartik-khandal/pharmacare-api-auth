@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/** Demonstrates method-level authorization that can depend on both role and resource. */
 @RestController
 @RequestMapping("/api/members")
 public class MemberController {
 
     @GetMapping("/{memberId}")
+    // @P names the method parameter for the SpEL expression used by @PreAuthorize.
     @PreAuthorize(
             "hasAuthority('ADMIN') or @securityService.canReadMember(authentication, #memberId)"
     )
